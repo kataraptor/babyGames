@@ -16,7 +16,7 @@ public class SnowBall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("tester");
+        //Debug.Log("tester");
         theRB.velocity = new Vector2(ballSpeed * transform.localScale.x, 0);
 		
 	}
