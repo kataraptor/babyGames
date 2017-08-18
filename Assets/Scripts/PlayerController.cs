@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour {
 
     private Animator anim;
 
+    public GameObject snowBall;
+    public Transform throwPoint;
+
 	// Use this for initialization
 	void Start () {
         theRB = GetComponent<Rigidbody2D>();
@@ -78,6 +81,13 @@ public class PlayerController : MonoBehaviour {
             oneTouch = 0;
         }
 
+        if(Input.GetKeyDown(throwBall) )
+        {
+            GameObject ballClone = (GameObject)Instantiate(snowBall, throwPoint.position, throwPoint.rotation);
+            ballClone.transform.localScale = transform.localScale;
+            anim.SetTrigger("Throw");
+        }
+
         if (theRB.velocity.x < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -90,6 +100,7 @@ public class PlayerController : MonoBehaviour {
         anim.SetFloat("Speed", Mathf.Abs(theRB.velocity.x));
         anim.SetBool("Grounded", isGrounded);
         //anim.SetTrigger()
+
 
 
 

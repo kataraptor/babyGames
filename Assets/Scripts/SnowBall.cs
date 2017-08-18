@@ -23,11 +23,11 @@ public class SnowBall : MonoBehaviour {
 
 
     //problems here: it still exists, it's not colliding with anything.
-    void onTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("got here");
 
         Instantiate(snowBallEffect, transform.position, transform.rotation);
-        transform.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
