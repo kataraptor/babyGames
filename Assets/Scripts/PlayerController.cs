@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     public KeyCode jump;
     public KeyCode throwBall;
 
+    int oneTouch;
 
     private Rigidbody2D theRB;
 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        oneTouch = 1;
         theRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 	}
@@ -41,16 +43,8 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //i need to make a boolean switch to allow one more jump
-        int oneTouch = 1;
-
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
         touchingWall = Physics2D.OverlapCircle(wallCheckPoint.position, wallCheckRadius, whatIsWall);
-
-        if(isGrounded)
-        {
-            oneTouch = 0;
-        }
 
         if (Input.GetKey(left))
         {
@@ -70,12 +64,13 @@ public class PlayerController : MonoBehaviour {
         {
             Debug.Log("first jump " + oneTouch);
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+            oneTouch = 1;
 
         }
 
-        if (Input.GetKeyDown(jump) && oneTouch == 1 && touchingWall)
+        if (Input.GetKeyDown(jump) && oneTouch == 1 && touchingWall && !isGrounded)
         {
-            //alllow one more jump
+            //Wall Jump
             Debug.Log("inside " + oneTouch);
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
             oneTouch = 0;
