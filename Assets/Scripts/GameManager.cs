@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
     public GameObject[] p1Hearts;
     public GameObject[] p2Hearts;
 
+    public AudioSource hurtSound;
+
 
 
     // Use this for initialization
@@ -53,6 +55,8 @@ public class GameManager : MonoBehaviour {
                 p1Hearts[i].SetActive(false);
             }
         }
+
+        hurtSound.Play();
     }
 
     public void HurtP2()
@@ -70,5 +74,7 @@ public class GameManager : MonoBehaviour {
                 p2Hearts[i].SetActive(false);
             }
         }
+
+        hurtSound.Play();
     }
 }

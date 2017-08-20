@@ -731,6 +731,7 @@ MonoBehaviour:
   - {fileID: 1724671115956536}
   - {fileID: 1347392113167688}
   - {fileID: 1816556949042524}
+  hurtSound: {fileID: 0}
 --- !u!114 &114637276356403694
 MonoBehaviour:
   m_ObjectHideFlags: 1
