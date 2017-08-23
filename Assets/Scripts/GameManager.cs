@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour {
     public GameObject[] p2Hearts;
 
     public AudioSource hurtSound;
+
+    public string mainMenu;
 
 
 
@@ -37,6 +40,16 @@ public class GameManager : MonoBehaviour {
         {
             player2.SetActive(false);
             p1Wins.SetActive(true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        //dont fuck up music loop, fix
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(mainMenu);
         }
     }
 
