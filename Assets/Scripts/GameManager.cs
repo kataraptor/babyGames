@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        //dont fuck up music loop, fix
+        //dont mess up music loop, fix
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(mainMenu);
